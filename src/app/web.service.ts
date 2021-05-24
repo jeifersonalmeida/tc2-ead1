@@ -22,5 +22,18 @@ export class WebService {
     return this.http.post(this.baseURL + "/produtos", body, {observe: "response"});
   }
 
+  deletarProduto(id: string): Observable<any> {
+    return this.http.delete(`${this.baseURL}/produtos/${id}`);
+  }
+
+  atualizarProduto(produto: Produto) {
+    const body = {
+      title: produto.title,
+      price: produto.price,
+      description: produto.description,
+    };
+    return this.http.put(`${this.baseURL}/produtos/${produto._id}`, body);
+  }
+
   constructor(private http : HttpClient) { }
 }

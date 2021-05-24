@@ -1,4 +1,6 @@
 <main>
-  <app-listar></app-listar>
-  <app-cadastrar></app-cadastrar>
+  <app-listar (produto)="produto = $event" [save]="save"></app-listar>
+
+  <app-cadastrar *ngIf="!produto"></app-cadastrar>
+  <app-atualizar *ngIf="produto" [produto]="produto" [save]="save" (cancel)="produto = null"></app-atualizar>
 </main>
